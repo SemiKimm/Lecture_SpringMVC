@@ -3,10 +3,12 @@ package com.nhnacademy.springmvc;
 import com.nhnacademy.springmvc.config.RootConfig;
 import com.nhnacademy.springmvc.config.WebConfig;
 import javax.servlet.Filter;
+import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+@Order(2)
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
