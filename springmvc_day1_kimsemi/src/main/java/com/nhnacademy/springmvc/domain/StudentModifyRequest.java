@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Length;
 public class StudentModifyRequest {
     @NotBlank
     String name;
-    @Pattern(regexp = "@")
+    @Pattern(regexp = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,6}$")
     String email;
     @Max(100)
     @Min(0)
