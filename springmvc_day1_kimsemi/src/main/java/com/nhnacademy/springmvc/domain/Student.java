@@ -14,7 +14,7 @@ public class Student {
     private String email;
     @Getter
     @Setter
-    private int score;
+    private Integer score;
     @Getter
     @Setter
     private String comment;
@@ -24,5 +24,13 @@ public class Student {
     private Student(Long id, String name){
         this.id = id;
         this.name = name;
+    }
+
+    public static Student hideScore(Student student){
+        Student hideScoreStudent = Student.create(student.getId(), student.getName());
+        hideScoreStudent.setEmail(student.getEmail());
+        hideScoreStudent.setScore(null);
+        hideScoreStudent.setComment(student.getComment());
+        return hideScoreStudent;
     }
 }

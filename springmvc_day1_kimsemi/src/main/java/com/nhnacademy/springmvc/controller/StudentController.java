@@ -6,6 +6,7 @@ import com.nhnacademy.springmvc.exception.StudentNotFoundException;
 import com.nhnacademy.springmvc.exception.ValidationFailedException;
 import com.nhnacademy.springmvc.repository.StudentRepository;
 import java.util.Objects;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -45,6 +46,18 @@ public class StudentController {
         return "studentView";
     }
 
+    @GetMapping(value = "/{studentId}", params = "hideScore=yes")
+    public String viewStudentHideScore(@ModelAttribute Student student, Model model) {
+        model.addAttribute("student", Student.hideScore(student));
+        return "studentView";
+    }
+
+    @GetMapping(value = "/{studentId}", params = "hideScore!=yes")
+    public String viewStudentNotHideScore(@ModelAttribute Student student, Model model) {
+        model.addAttribute("student", student);
+        return "studentView";
+    }
+
     @GetMapping("/{studentId}/modify")
     public String studentModifyForm(@ModelAttribute Student student, ModelMap modelMap) {
         modelMap.put("student", student);
@@ -74,7 +87,7 @@ public class StudentController {
 
     @ExceptionHandler(StudentNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public void notFound(){
+    public void notFound() {
 
     }
 
