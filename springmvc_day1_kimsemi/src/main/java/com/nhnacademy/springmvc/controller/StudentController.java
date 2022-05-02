@@ -1,11 +1,16 @@
 package com.nhnacademy.springmvc.controller;
 
 import com.nhnacademy.springmvc.domain.Student;
+import com.nhnacademy.springmvc.domain.StudentModifyRequest;
 import com.nhnacademy.springmvc.exception.StudentNotFoundException;
+import com.nhnacademy.springmvc.exception.ValidationFailedException;
 import com.nhnacademy.springmvc.repository.StudentRepository;
 import java.util.Objects;
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,12 +43,29 @@ public class StudentController {
     }
 
     @GetMapping("/{studentId}/modify")
-    public String studentModifyForm() {
+    public String studentModifyForm(@ModelAttribute Student student, ModelMap modelMap) {
+        modelMap.put("student", student);
         return "studentModify";
     }
 
     @PostMapping("/{studentId}/modify")
-    public String modifyStudent() {
+    public String modifyStudent(@ModelAttribute Student student,
+                                @Valid @ModelAttribute StudentModifyRequest studentRequest,
+                                BindingResult bindingResult,
+                                Model model) {
+        if (bindingResult.hasErrors()) {
+            throw new ValidationFailedException(bindingResult);
+        }
+
+        student.setName(studentRequest.getName());
+        student.setEmail(studentRequest.getEmail());
+        student.setScore(studentRequest.getScore());
+        student.setComment(studentRequest.getComment());
+
+        studentRepository.modify(student);
+
+        model.addAttribute("student", student);
+
         return "studentView";
     }
 

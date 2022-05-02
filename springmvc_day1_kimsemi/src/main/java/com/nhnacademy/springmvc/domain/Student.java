@@ -7,6 +7,7 @@ public class Student {
     @Getter
     private long id;
     @Getter
+    @Setter
     private String name;
     @Getter
     @Setter
