@@ -5,11 +5,11 @@
     <title>학생 정보 조회</title>
 </head>
 <body>
-이름: <span th:text="${student.id}"/><br/>
-이메일: <span th:text="${student.email}"/><br/>
-성적: <span th:text="${student.score}"/><br/>
-평가: <span th:text="${student.comment}"/><br/>
+<span th:text="#{name}"/>: <span th:text="${student.id}"/><br/>
+<span th:text="#{email}"/>: <span th:text="${student.email}"/><br/>
+<span th:text="#{score}"/>: <span th:text="${student.score}"/><br/>
+<span th:text="#{comment}"/>: <span th:text="${student.comment}"/><br/>
 <br/>
-<a th:href="@{/student/${student.id}/modify}">정보 수정</a><br/>
+<a th:href="@{/student/${student.id}/modify}"><span th:text="#{modifyInfo}"/></a><br/>
 </body>
 </html>
