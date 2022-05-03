@@ -10,6 +10,6 @@
 성적: <span th:text="${student.score}"/><br/>
 평가: <span th:text="${student.comment}"/><br/>
 <br/>
-<a th:href="/student/${student.id}/modify">정보 수정</a><br/>
+<a th:href="@{/student/${student.id}/modify}">정보 수정</a><br/>
 </body>
 </html>
