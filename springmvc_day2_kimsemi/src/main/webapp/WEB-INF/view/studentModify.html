@@ -5,7 +5,7 @@
     <title>학생 정보 수정</title>
 </head>
 <body>
-<form method="post" th:action="@{/student/${student.id}/modify}">
+<form method="post" th:action="@{/student/{studentId}/modify(studentId=${student.id})}">
     <span th:text="#{name}"/>: <input type="text" name="name" th:value="${student.name}"/><br />
     <span th:text="#{email}"/>: <input type="text" name="email" th:value="${student.email}" /><br />
     <span th:text="#{score}"/>: <input type="text" name="score" th:value="${student.score}" /><br />
