@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+<form method="post" th:action="@{/login}">
+    <span th:text="#{id}"/> : <input type="text" name="id"/><br/>
+    <span th:text="#{password}"/> : <input type="password" name="password"/><br/>
+    <input type="submit" th:value="#{login}"/>
+</form>
+</body>
+</html>
