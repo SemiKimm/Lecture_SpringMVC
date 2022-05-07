@@ -33,4 +33,15 @@ public class Student {
         hideScoreStudent.setComment(student.getComment());
         return hideScoreStudent;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", email='" + email + '\'' +
+            ", score=" + score +
+            ", comment='" + comment + '\'' +
+            '}';
+    }
 }
