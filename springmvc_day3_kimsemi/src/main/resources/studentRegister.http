@@ -1,0 +1,9 @@
+POST http://localhost:8081/students HTTP/1.1
+Content-type: application/json
+
+{
+  "name": "semi",
+  "email": "hi@naver.com",
+  "score": 19,
+  "comment": "분발해야합니다"
+}
