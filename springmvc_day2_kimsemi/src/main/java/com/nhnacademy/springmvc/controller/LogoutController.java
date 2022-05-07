@@ -2,7 +2,6 @@ package com.nhnacademy.springmvc.controller;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Optional;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,11 +16,9 @@ public class LogoutController {
     public String logout(HttpServletRequest request,
                          HttpServletResponse response) {
         Cookie[] cookies = request.getCookies();
-        Cookie sessionCookie =
-            Optional.of(Arrays.stream(cookies)
-                .filter(cookie -> cookie.getName().equals("SESSION"))
-                .findFirst()
-                .get()).orElse(null);
+        Cookie sessionCookie = Arrays.stream(cookies)
+            .filter(cookie -> cookie.getName().equals("SESSION"))
+            .findFirst().orElse(null);
 
         if (Objects.nonNull(sessionCookie)
             && Objects.nonNull(sessionCookie.getValue())) {
