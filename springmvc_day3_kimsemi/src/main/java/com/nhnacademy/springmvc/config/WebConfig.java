@@ -85,7 +85,7 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware, Mes
         registry.addInterceptor(new LocaleChangeInterceptor());
         registry.addInterceptor(new LoginCheckInterceptor())
             .addPathPatterns("/student/**")
-            .excludePathPatterns("/","/login");
+            .excludePathPatterns("/","/login","/students/**");
     }
 
     @Override

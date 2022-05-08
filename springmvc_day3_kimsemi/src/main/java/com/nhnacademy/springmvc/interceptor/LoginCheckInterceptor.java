@@ -22,10 +22,8 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         if (Objects.isNull(sessionCookie)
             || Objects.isNull(sessionCookie.getValue())) {
             response.sendRedirect("/login");
-            log.debug("뭐가 안되는거지ㅣㅣㅣ2");
             return false;
         }
-        log.debug("뭐가 안되는거지ㅣㅣㅣ3");
         return true;
     }
 }
